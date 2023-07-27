@@ -9,9 +9,6 @@ import static org.junit.Assert.*;
 
 public class CalculatorTest {
 
-    private final int a = 2;
-    private final int b = 3;
-
     @BeforeClass
     public static void beforeClassStartTestTime() {
         System.out.println("Test class has been started at: " + System.currentTimeMillis());
@@ -36,6 +33,8 @@ public class CalculatorTest {
     public void testAddition() {
         // Given
         Calculator calculator = new Calculator();
+        int a = 2;
+        int b = 3;
 
         // When
         int result = calculator.add(a, b);
@@ -49,6 +48,8 @@ public class CalculatorTest {
     public void testSubtraction() {
         // Given
         Calculator calculator = new Calculator();
+        int a = 2;
+        int b = 3;
 
         // When
         int result = calculator.subtract(a, b);
@@ -62,6 +63,8 @@ public class CalculatorTest {
     public void testMultiplication() {
         // Given
         Calculator calculator = new Calculator();
+        int a = 2;
+        int b = 3;
 
         // When
         int result = calculator.multiply(a, b);
@@ -75,6 +78,8 @@ public class CalculatorTest {
     public void testDivision() {
         // Given
         Calculator calculator = new Calculator();
+        int a = 2;
+        int b = 3;
 
         // When
         double result = calculator.divide(a, b);
@@ -82,5 +87,18 @@ public class CalculatorTest {
         // Then
         double expected = 0.67;
         assertEquals(expected, result, 1);
+    }
+
+    @Test
+    public void testDivisionByZero() {
+        // Given
+        Calculator calculator = new Calculator();
+        int a = 2;
+        int b = 0;
+
+        // When & Then
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.divide(a, b);
+        });
     }
 }
